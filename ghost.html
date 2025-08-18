@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GhostCoder Assistant</title>
+<style>
+:root {
+    --primary-bg: #0a0a0a;
+    --secondary-bg: #111;
+    --text-color: #fff;
+    --accent-color: #fff;
+    --glow: 0 0 8px rgba(255, 255, 255, 0.4);
+    --glow-strong: 0 0 18px rgba(255, 255, 255, 0.7);
+    --border-radius: 12px;
+    --bot-bubble-bg: #1a1a1a;
+    --user-bubble-bg: #2a2a2a;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #0b0F11;
+    color: var(--text-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* IMAGE SECTION */
+.image-container {
+    flex: 1 1 400px;
+    max-width: 500px;
+}
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.image-container img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.15);
+}
+
+/* CHATBOT */
+.chatbot-container {
+    flex: 1 1 350px;
+    max-width: 380px;
+    background-color: var(--secondary-bg);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--glow-strong);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.chatbot-container:hover {
+    transform: scale(1.03);
+}
+
+/* HEADER */
+.chatbot-header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-bg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.bot-avatar {
+    width: 32px;
+    height: 32px;
+    background: var(--accent-color);
+    color: #000;
+    border-radius: 50%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--glow);
+}
+.chatbot-header h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+.chatbot-toggle {
+    background: transparent;
+    color: var(--accent-color);
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* CHAT BODY */
+.chatbot-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    background-color: var(--primary-bg);
+}
+.message {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.message-bubble {
+    padding: 10px 14px;
+    border-radius: var(--border-radius);
+    max-width: 80%;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.bot-bubble {
+    background: var(--bot-bubble-bg);
+    align-self: flex-start;
+    box-shadow: var(--glow);
+}
+.user-bubble {
+    background: var(--user-bubble-bg);
+    align-self: flex-end;
+    box-shadow: var(--glow);
+}
+.message-time {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+/* QUICK REPLIES */
+.quick-replies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+.quick-reply {
+    padding: 5px 10px;
+    background-color: var(--secondary-bg);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.quick-reply:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* TYPING INDICATOR */
+.typing-indicator {
+    display: none;
+    gap: 5px;
+    padding: 5px;
+    align-items: center;
+}
+.typing-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    animation: blink 1.2s infinite ease-in-out;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink {
+    0%, 80%, 100% { opacity: 0.3; }
+    40% { opacity: 1; }
+}
+
+/* FOOTER */
+.chatbot-footer {
+    padding: 10px;
+    background-color: var(--secondary-bg);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+.chat-input {
+    display: flex;
+    gap: 8px;
+}
+.chat-input input {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: #111;
+    color: var(--text-color);
+}
+.chat-input button {
+    background-color: var(--accent-color);
+    color: #000;
+    border: none;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.chat-input button:hover {
+    background-color: #ddd;
+}
+</style>
+</head>
+<body>
+
+<div class="image-container">
+    <img src="https://github.com/GangadharPrathap/codechef-python/blob/main/image-removebg-preview.png?raw=true" alt="Character">
+</div>
+
+<div class="chatbot-container" id="chatbot">
+    <div class="chatbot-header">
+        <h3>GhostCoder</h3>
+        <button class="chatbot-toggle" id="toggleBtn">−</button>
+    </div>
+    <div class="chatbot-body" id="chatBody">
+        <div class="message bot-message">
+            <div class="message-bubble bot-bubble">Hello! I'm your AI assistant. How can I help you today?</div>
+            <div class="message-time">just now</div>
+        </div>
+    </div>
+    <div class="typing-indicator" id="typingIndicator">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+    </div>
+    <div class="chatbot-footer">
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message..." autocomplete="off">
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const chatbotResponses = {
+    "hello": "Hi there! How can I assist you today?",
+    "hi": "Hello! What would you like to know?",
+    "what can you do": "I can answer questions, provide information, and help with various topics.",
+    "who are you": "I'm an AI chatbot with a glowing black theme!",
+    "who created you": "I was created by a skilled developer who loves minimal glowing designs.",
+    "what are your features": "I can answer, provide quick replies, and keep you engaged.",
+    "how are you": "I'm functioning perfectly in my sleek black interface!",
+    "default": "I'm not sure how to respond to that. Try asking something else!"
+};
+
+const quickQuestions = [
+    "How do I use this?",
+    "What can you help with?",
+    "Who made you?",
+    "Show me examples",
+    "Goodbye"
+];
+
+const chatBody = document.getElementById('chatBody');
+const userInput = document.getElementById('userInput');
+const sendBtn = document.getElementById('sendBtn');
+const typingIndicator = document.getElementById('typingIndicator');
+const toggleBtn = document.getElementById('toggleBtn');
+let isMinimized = false;
+
+toggleBtn.addEventListener('click', () => {
+    isMinimized = !isMinimized;
+    document.getElementById('chatbot').style.display = isMinimized ? 'none' : 'flex';
+    toggleBtn.textContent = isMinimized ? '+' : '−';
+});
+
+sendBtn.addEventListener('click', sendMessage);
+userInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
+
+function sendMessage() {
+    const message = userInput.value.trim();
+    if (!message) return;
+    addMessage(message, 'user');
+    userInput.value = '';
+    showTyping();
+    setTimeout(() => {
+        hideTyping();
+        const response = getBotResponse(message);
+        addMessage(response, 'bot');
+        addQuickReplies();
+    }, 800);
+}
+
+function addMessage(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message ' + sender + '-message';
+    const bubbleDiv = document.createElement('div');
+    bubbleDiv.className = 'message-bubble ' + sender + '-bubble';
+    bubbleDiv.textContent = text;
+    const timeDiv = document.createElement('div');
+    timeDiv.className = 'message-time';
+    timeDiv.textContent = getCurrentTime();
+    messageDiv.appendChild(bubbleDiv);
+    messageDiv.appendChild(timeDiv);
+    chatBody.appendChild(messageDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function showTyping() { typingIndicator.style.display = 'flex'; }
+function hideTyping() { typingIndicator.style.display = 'none'; }
+
+function getBotResponse(userMessage) {
+    const lower = userMessage.toLowerCase();
+    for (const key in chatbotResponses) {
+        if (lower.includes(key)) return chatbotResponses[key];
+    }
+    return chatbotResponses["default"];
+}
+
+function addQuickReplies() {
+    const quickDiv = document.createElement('div');
+    quickDiv.className = 'quick-replies';
+    const shuffled = [...quickQuestions].sort(() => 0.5 - Math.random()).slice(0, 3);
+    shuffled.forEach(q => {
+        const btn = document.createElement('div');
+        btn.className = 'quick-reply';
+        btn.textContent = q;
+        btn.onclick = () => { userInput.value = q; sendMessage(); };
+        quickDiv.appendChild(btn);
+    });
+    chatBody.lastChild.appendChild(quickDiv);
+}
+
+function getCurrentTime() {
+    const now = new Date();
+    return now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+}
+</script>
+</body>
+</html>

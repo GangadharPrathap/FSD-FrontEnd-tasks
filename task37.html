@@ -1,0 +1,219 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>21-06-2025 tasks</title>
+    <link rel="stylesheet" href="task37.css">
+</head>
+<body>
+    <header>
+    </header>
+    <div class="news"></div>
+    <div class="img-roll"></div>
+    <div class="block"></div>
+    <div class="features"></div>
+    <div class="student"></div>
+    <div class="rect"></div>
+    <footer>
+        <div class="foota"></div>
+        <div class="footb">
+            <div class="copy" style="background-color: #001a39;">
+                <div class="container">
+                    <div class="blo1">
+                        <p style="float: left; margin-top: 15px;"><b>Aditya University</b>" © 2024-All Rights Reserved"</p>
+                        <p style="float: right;"><b>Powered By</b>&nbsp;&nbsp;
+                        <a href="https://technicalhub.io/" style="list-style: none; color:white;" id="thub">
+                            ::before
+                            <img src="https://technicalhub.io/logos/T-Hub_logo.png" alt style="width: 200px; height: 50px;">
+                        </a>
+                    </p>
+                        <div class="fix">
+                            ::before 
+                            ::after
+                        </div>
+                    </div>
+                    ::after
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            ::before
+            <div class="apply_admission_card" style="background-color: #fd752c; height: 60px; margin-bottom: 0px;">
+                <div class="container">
+                    ::before
+                    <div class="row">
+                        ::before
+                        .col
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Featured Articles - TechnicalHub</title>
+  <style>
+    /* Base Resets and Typography */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #f7f9fc;
+      color: #333333;
+      line-height: 1.6;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #1e2a38;
+    }
+
+    /* Container */
+    .featured-articles {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Grid Layout */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Article Card */
+    article.article-card {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    article.article-card:hover,
+    article.article-card:focus-within {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Article Image */
+    .article-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    /* Article Content */
+    .article-content {
+      padding: 1rem 1.25rem 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      color: #0b3d91; /* Tech blue color */
+    }
+
+    .article-description {
+      flex-grow: 1;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #555555;
+    }
+
+    /* Read More Button */
+    .read-more-btn {
+      align-self: flex-start;
+      background-color: #0b3d91;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .read-more-btn:hover,
+    .read-more-btn:focus {
+      background-color: #092b68;
+      outline: none;
+    }
+
+    /* Responsive Enhancements */
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem;
+      }
+
+      .article-image {
+        height: 140px;
+      }
+
+      h2 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="featured-articles" aria-labelledby="featured-articles-heading">
+    <h2 id="featured-articles-heading">Featured Articles</h2>
+
+    <div class="articles-grid">
+      
+      <article class="article-card" tabindex="0" aria-label="Article on JavaScript ES6 Features">
+        <img src="https://technicalhub.io/wp-content/uploads/2021/07/es6-features-1024x576.png" alt="Code snippet depicting JavaScript ES6 features" class="article-image" />
+        <div class="article-content">
+          <h3 class="article-title">Mastering JavaScript ES6 Features</h3>
+          <p class="article-description">Explore the newest features introduced in ES6, including let/const, arrow functions, template literals, destructuring, and more.</p>
+          <a href="https://technicalhub.io/mastering-javascript-es6-features/" class="read-more-btn" aria-label="Read more about Mastering JavaScript ES6 Features">Read More</a>
+        </div>
+      </article>
+      
+      <article class="article-card" tabindex="0" aria-label="Article on CSS Grid Layout Tutorial">
+        <img src="https://technicalhub.io/wp-content/uploads/2020/11/css-grid-layout-tutorial-1024x576.png" alt="Grid layout example in CSS" class="article-image" />
+        <div class="article-content">
+          <h3 class="article-title">CSS Grid Layout: A Comprehensive Tutorial</h3>
+          <p class="article-description">Learn how to build complex, responsive grid layouts easily using CSS Grid with practical examples and tips.</p>
+          <a href="https://technicalhub.io/css-grid-layout-tutorial/" class="read-more-btn" aria-label="Read more about CSS Grid Layout Tutorial">Read More</a>
+        </div>
+      </article>
+      
+      <article class="article-card" tabindex="0" aria-label="Article on Understanding React Hooks">
+        <img src="https://technicalhub.io/wp-content/uploads/2021/03/react-hooks-1024x576.png" alt="React Hooks diagram" class="article-image" />
+        <div class="article-content">
+          <h3 class="article-title">Understanding React Hooks</h3>
+          <p class="article-description">Dive deep into React Hooks, exploring useState, useEffect, and custom hooks to write cleaner and efficient React components.</p>
+          <a href="https://technicalhub.io/understanding-react-hooks/" class="read-more-btn" aria-label="Read more about Understanding React Hooks">Read More</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</body>
+</html>

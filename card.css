@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "montserrat", sans-serif;
+    background-color: azure;
+}
+.cardw {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}.card {
+    width: 550px;
+    height: 300px;
+    background-color: rgb(158, 158, 134);
+    box-shadow: 0 10px 20px black;
+}
+.front{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    backface-visibility: hidden;
+    background: linear-gradient(rgb(255,255,255) 40%,
+    rgb(38,38,38 ) 0
+    );
+}.left{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.left img{
+    width: 80%;
+}
+.left h4{
+    margin: 10px;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.left span{
+    text-transform: uppercase;
+    color: violet;
+}.right{
+    width: 60%;
+    color: aliceblue;
+}
+.right-content{
+    display: flex;
+    align-items: center;
+    margin: 20px 0 ;
+}.person{
+    background-color: violet;
+    padding: 5px 0 5px 30px;
+    margin: 30px 0;
+    box-shadow: 0 10px 20px pink;
+}
+.right-content i{
+    width: 35px;
+    height: 35px;
+    border:2px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: violet;
+    margin-right: 20px;
+}
+.person h4{
+    text-transform: uppercase;
+}.phone{
+    padding-left: 30px;
+}.email{
+    padding-left: 20px;
+}.Address{
+    padding-left: 10px;
+}.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+.back {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.back a {
+    color: #555;
+    font-size: 24px;
+    transition: color 0.2s;
+}
+ .back a:hover {
+    color: pink;
+}

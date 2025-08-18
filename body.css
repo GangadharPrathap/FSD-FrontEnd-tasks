@@ -1,0 +1,143 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.dotted-background {
+  width: 600px;
+  height: 600px;
+  background-color: #f0f0f0;
+  background-image: radial-gradient(#ccc 1px, transparent 1px);
+  background-size: 20px 20px;
+  position: relative;
+}
+
+.stick-figure {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Head */
+.head {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  position: relative;
+  background-color: transparent;
+}
+
+.eye {
+  width: 6px;
+  height: 6px;
+  background-color: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+}
+
+.left-eye {
+  left: 15px;
+}
+
+.right-eye {
+  right: 15px;
+}
+
+.mouth {
+  width: 10px;
+  height: 2px;
+  background-color: #000;
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+}
+
+/* Body */
+.body {
+  width: 2px;
+  height: 100px;
+  background-color: #000;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Arms */
+.arm {
+  width: 80px;
+  height: 2px;
+  background-color: #000;
+  position: absolute;
+  top: 70px;
+}
+
+.left-arm {
+  left: -30px;
+  transform: rotate(0deg);
+}
+
+.right-arm {
+  left: 0px;
+  transform: rotate(0deg);
+}
+
+.hand {
+  width: 2px;
+  height: 30px;
+  background-color: #000;
+  position: absolute;
+}
+
+.left-hand {
+  left: 0;
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.right-hand {
+  right: 0;
+  top: 0;
+  transform: rotate(90deg);
+}
+
+/* Legs */
+.leg {
+  width: 2px;
+  height: 80px;
+  background-color: #000;
+  position: absolute;
+  top: 150px;
+}
+
+.left-leg {
+  left: 25px;
+}
+
+.right-leg {
+  right: 25px;
+}
+
+.foot {
+  width: 20px;
+  height: 2px;
+  background-color: #000;
+  position: absolute;
+  bottom: 0;
+}
+
+.left-foot {
+  left: 0;
+}
+
+.right-foot {
+  right: 0;
+}
